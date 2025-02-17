@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'linkedservices_demodeven'"
 		},
+		"sample_linked_service_for_github_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'sample_linked_service_for_github'"
+		},
 		"Linked_service_sql_server_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "@{linkedService().servername}"
@@ -64,6 +68,9 @@
 					},
 					"linkedservices_demodeven_connectionString": {
 						"value": "[parameters('linkedservices_demodeven_connectionString')]"
+					},
+					"sample_linked_service_for_github_connectionString": {
+						"value": "[parameters('sample_linked_service_for_github_connectionString')]"
 					},
 					"Linked_service_sql_server_properties_typeProperties_server": {
 						"value": "[parameters('Linked_service_sql_server_properties_typeProperties_server')]"

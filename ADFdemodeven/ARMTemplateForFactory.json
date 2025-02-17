@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'linkedservices_demodeven'"
 		},
+		"sample_linked_service_for_github_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'sample_linked_service_for_github'"
+		},
 		"Linked_service_sql_server_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "@{linkedService().servername}"
@@ -1274,6 +1278,52 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/sampledatasetforgit')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "sample_linked_service_for_github",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Employee2.csv",
+						"folderPath": "noobdemo",
+						"container": "democontainer"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "empid",
+						"type": "String"
+					},
+					{
+						"name": "name",
+						"type": "String"
+					},
+					{
+						"name": "country",
+						"type": "String"
+					},
+					{
+						"name": "department",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/sample_linked_service_for_github')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Linked_service_sql_server')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -1315,6 +1365,19 @@
 				"type": "AzureBlobStorage",
 				"typeProperties": {
 					"connectionString": "[parameters('linkedservices_demodeven_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/sample_linked_service_for_github')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('sample_linked_service_for_github_connectionString')]"
 				}
 			},
 			"dependsOn": []

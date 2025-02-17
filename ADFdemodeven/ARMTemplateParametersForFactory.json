@@ -8,6 +8,9 @@
 		"linkedservices_demodeven_connectionString": {
 			"value": ""
 		},
+		"sample_linked_service_for_github_connectionString": {
+			"value": ""
+		},
 		"Linked_service_sql_server_properties_typeProperties_server": {
 			"value": "@{linkedService().servername}"
 		},
