@@ -1,0 +1,19 @@
+{
+	"name": "OutPutFolderDeleteData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedservices_demodeven",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "output",
+				"container": "democontainer"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
